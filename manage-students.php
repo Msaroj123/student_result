@@ -81,9 +81,6 @@ if(strlen($_SESSION['alogin'])=="")
 
                         <section class="section">
                             <div class="container-fluid">
-
-                             
-
                                 <div class="row">
                                     <div class="col-md-12">
 
@@ -93,13 +90,13 @@ if(strlen($_SESSION['alogin'])=="")
                                                     <h5>View Students Info</h5>
                                                 </div>
                                             </div>
-<?php if($msg){?>
-<div class="alert alert-success left-icon-alert" role="alert">
- <strong>Well done!</strong><?php echo htmlentities($msg); ?>
- </div><?php } 
-else if($error){?>
-    <div class="alert alert-danger left-icon-alert" role="alert">
-                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                            <?php if($msg){?>
+                                            <div class="alert alert-success left-icon-alert" role="alert">
+                                            <strong>Well done!</strong><?php echo htmlentities($msg); ?>
+                                            </div><?php } 
+                                            else if($error){?>
+                                                <div class="alert alert-danger left-icon-alert" role="alert">
+                                                <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
                                         </div>
                                         <?php } ?>
                                             <div class="panel-body p-20">
@@ -128,34 +125,34 @@ else if($error){?>
                                                         </tr>
                                                     </tfoot>
                                                     <tbody>
-<?php $sql = "SELECT tblstudents.StudentName,tblstudents.RollId,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section from tblstudents join tblclasses on tblclasses.id=tblstudents.ClassId";
-$query = $dbh->prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{   ?>
-<tr>
- <td><?php echo htmlentities($cnt);?></td>
+                                                            <?php $sql = "SELECT tblstudents.StudentName,tblstudents.RollId,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section from tblstudents join tblclasses on tblclasses.id=tblstudents.ClassId";
+                                                            $query = $dbh->prepare($sql);
+                                                            $query->execute();
+                                                            $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                                            $cnt=1;
+                                                            if($query->rowCount() > 0)
+                                                            {
+                                                            foreach($results as $result)
+                                                            {   ?>
+                                                            <tr>
+                                                            <td><?php echo htmlentities($cnt);?></td>
                                                             <td><?php echo htmlentities($result->StudentName);?></td>
                                                             <td><?php echo htmlentities($result->RollId);?></td>
                                                             <td><?php echo htmlentities($result->ClassName);?>(<?php echo htmlentities($result->Section);?>)</td>
                                                             <td><?php echo htmlentities($result->RegDate);?></td>
                                                              <td><?php if($result->Status==1){
-echo htmlentities('Active');
-}
-else{
-   echo htmlentities('Blocked'); 
-}
-                                                                ?></td>
-<td>
-<a href="edit-student.php?stid=<?php echo htmlentities($result->StudentId);?>"><i class="fa fa-edit" title="Edit Record"></i> </a> 
+                                                            echo htmlentities('Active');
+                                                            }
+                                                            else{
+                                                            echo htmlentities('Blocked'); 
+                                                            }
+                                                                                                                            ?></td>
+                                                            <td>
+                                                            <a href="edit-student.php?stid=<?php echo htmlentities($result->StudentId);?>"><i class="fa fa-edit" title="Edit Record"></i> </a> 
 
-</td>
-</tr>
-<?php $cnt=$cnt+1;}} ?>
+                                                            </td>
+                                                            </tr>
+                                                            <?php $cnt=$cnt+1;}} ?>
                                                        
                                                     
                                                     </tbody>

@@ -101,18 +101,18 @@ else if($error){?>
                                         <?php } ?>
 
                                                 <form method="post">
-<?php 
-$cid=intval($_GET['classid']);
-$sql = "SELECT * from tblclasses where id=:cid";
-$query = $dbh->prepare($sql);
-$query->bindParam(':cid',$cid,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{   ?>
+                                                    <?php 
+                                                    $cid=intval($_GET['classid']);
+                                                    $sql = "SELECT * from tblclasses where id=:cid";
+                                                    $query = $dbh->prepare($sql);
+                                                    $query->bindParam(':cid',$cid,PDO::PARAM_STR);
+                                                    $query->execute();
+                                                    $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                                    $cnt=1;
+                                                    if($query->rowCount() > 0)
+                                                    {
+                                                    foreach($results as $result)
+                                                    {   ?>
 
                                                     <div class="form-group has-success">
                                                         <label for="success" class="control-label">Class Name</label>

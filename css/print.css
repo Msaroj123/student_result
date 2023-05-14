@@ -1,0 +1,41 @@
+@import "main.css";
+@import url("prism/prism.css");
+@import "lobipanel/lobipanel.min.css";
+@import url("bootstrap.min.css");
+
+@page {
+    margin: none;
+    margin-left: 200px;
+}
+
+#print-btn {
+    visibility: none;
+    display: none;
+}
+
+#back-to-home {
+    visibility: none;
+    display: none;
+}
+
+
+#rms {
+    visibility: none;
+    display: none;
+}
+
+#jgec {
+    color: blue;
+    margin-left: 100px;
+}
+
+#top {
+    margin-top: 40px
+}
+
+#photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 300px;
+}
